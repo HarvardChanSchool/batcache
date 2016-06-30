@@ -524,8 +524,9 @@ if ( isset( $batcache->cache['time'] ) && // We have cache
 		die;
 	}
 
-	if ( !empty($batcache->cache['status_header']) )
+	if ( !empty($batcache->cache['status_header']) && !isset( $batcache->cache['headers']['Location'] ) ) {
 		header($batcache->cache['status_header'], true);
+	}
 
 	batcache_stats( 'batcache', 'total_cached_views' );
 
